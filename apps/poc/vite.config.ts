@@ -5,7 +5,7 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/apps/tanstack-router-monorepo',
+  cacheDir: '../../node_modules/.vite/apps/poc',
 
   server: {
     port: 4200,
@@ -25,7 +25,7 @@ export default defineConfig({
   // },
 
   build: {
-    outDir: '../../dist/apps/tanstack-router-monorepo',
+    outDir: '../../dist/apps/poc',
     reportCompressedSize: true,
     commonjsOptions: {
       transformMixedEsModules: true,

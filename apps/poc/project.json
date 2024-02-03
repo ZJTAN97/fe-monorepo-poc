@@ -1,7 +1,7 @@
 {
-  "name": "tanstack-router-monorepo",
+  "name": "poc",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/tanstack-router-monorepo/src",
+  "sourceRoot": "apps/poc/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,7 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/tanstack-router-monorepo"
+        "outputPath": "dist/apps/poc"
       },
       "configurations": {
         "development": {
@@ -24,15 +24,15 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "tanstack-router-monorepo:build"
+        "buildTarget": "poc:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "tanstack-router-monorepo:build:development",
+          "buildTarget": "poc:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "tanstack-router-monorepo:build:production",
+          "buildTarget": "poc:build:production",
           "hmr": false
         }
       }
@@ -41,14 +41,14 @@
       "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "tanstack-router-monorepo:build"
+        "buildTarget": "poc:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "tanstack-router-monorepo:build:development"
+          "buildTarget": "poc:build:development"
         },
         "production": {
-          "buildTarget": "tanstack-router-monorepo:build:production"
+          "buildTarget": "poc:build:production"
         }
       }
     },
@@ -56,7 +56,7 @@
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "../../coverage/apps/tanstack-router-monorepo"
+        "reportsDirectory": "../../coverage/apps/poc"
       }
     },
     "lint": {

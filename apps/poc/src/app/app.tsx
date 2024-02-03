@@ -6,7 +6,7 @@ import NxWelcome from './nx-welcome';
 export function App() {
   return (
     <div>
-      <NxWelcome title="tanstack-router-monorepo" />
+      <NxWelcome title="Proof of concept" />
     </div>
   );
 }
