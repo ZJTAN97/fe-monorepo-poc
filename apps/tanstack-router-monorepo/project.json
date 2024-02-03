@@ -1,0 +1,67 @@
+{
+  "name": "tanstack-router-monorepo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/tanstack-router-monorepo/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/tanstack-router-monorepo"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "tanstack-router-monorepo:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "tanstack-router-monorepo:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "tanstack-router-monorepo:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "tanstack-router-monorepo:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "tanstack-router-monorepo:build:development"
+        },
+        "production": {
+          "buildTarget": "tanstack-router-monorepo:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/apps/tanstack-router-monorepo"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  },
+  "tags": []
+}
