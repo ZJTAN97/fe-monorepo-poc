@@ -1,8 +1,5 @@
-import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
 import {
   Outlet,
-  RouterProvider,
   NotFoundRoute,
   createRootRoute,
   createRoute,
@@ -11,10 +8,12 @@ import {
 } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import '@mantine/core/styles.css';
-import { AppShell, Flex, MantineProvider, Text } from '@mantine/core';
+import { AppShell, Flex, MantineProvider } from '@mantine/core';
 import { ProfilePage, CreateProfilePage } from '@fe-monorepo-poc/store';
+import { LandingPage, SearchResultsPage } from '@fe-monorepo-poc/search';
 
 export const rootRoute = createRootRoute({
+  notFoundComponent: () => <div>404 not found</div>,
   component: () => (
     <MantineProvider defaultColorScheme="dark">
       <AppShell header={{ height: 60 }} padding="md">
@@ -38,7 +37,7 @@ export const rootRoute = createRootRoute({
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: () => <div>Search for anything</div>,
+  component: () => <LandingPage />,
 });
 
 const searchRoute = createRoute({
@@ -65,15 +64,6 @@ const workspaceRoute = createRoute({
   component: () => <div>workspace route</div>,
 });
 
-const notFoundRoute = new NotFoundRoute({
-  getParentRoute: () => rootRoute,
-  component: () => (
-    <div>
-      <Link to="/">Back to home</Link>
-    </div>
-  ),
-});
-
 const routeTree = rootRoute.addChildren([
   indexRoute,
   searchRoute,
@@ -82,19 +72,7 @@ const routeTree = rootRoute.addChildren([
   workspaceRoute,
 ]);
 
-const router = createRouter({ routeTree, notFoundRoute });
-
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const rootElement = document.getElementById('root')!;
-
-if (!rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(
-    <StrictMode>
-      <RouterProvider router={router} />
-    </StrictMode>
-  );
-}
+export const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {
   interface Register {
