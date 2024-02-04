@@ -26,8 +26,17 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  tslib:
+    specifier: ^2.3.0
+    version: 2.6.2
 
 devDependencies:
+  '@babel/core':
+    specifier: ^7.14.5
+    version: 7.23.9
+  '@babel/preset-react':
+    specifier: ^7.14.5
+    version: 7.23.3(@babel/core@7.23.9)
   '@nx/devkit':
     specifier: 17.3.1
     version: 17.3.1(nx@17.3.1)
@@ -4001,7 +4010,7 @@ packages:
   /builtins@5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.5.3
+      semver: 7.5.4
     dev: true
 
   /cac@6.7.14:

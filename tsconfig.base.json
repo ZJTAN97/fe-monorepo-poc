@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@fe-monorepo-poc/search": ["libs/search/src/index.ts"],
+      "@fe-monorepo-poc/store": ["libs/store/src/index.ts"],
+      "@fe-monorepo-poc/workspace": ["libs/workspace/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

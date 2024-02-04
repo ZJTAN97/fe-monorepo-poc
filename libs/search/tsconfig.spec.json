@@ -7,9 +7,7 @@
       "vitest/importMeta",
       "vite/client",
       "node",
-      "vitest",
-      "@nx/react/typings/cssmodule.d.ts",
-      "@nx/react/typings/image.d.ts"
+      "vitest"
     ]
   },
   "include": [
@@ -23,7 +21,6 @@
     "src/**/*.spec.js",
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx",
-    "src/**/*.d.ts", 
-    "src/app/routes.tsx"  
-  ],
+    "src/**/*.d.ts"
+  ]
 }
