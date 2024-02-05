@@ -2,19 +2,17 @@ import { FERootRoute } from '@fe-monorepo-poc/fe-base';
 import { Stack, Text } from '@mantine/core';
 import { Link, createRoute } from '@tanstack/react-router';
 
-export const SearchResultsPageRoute = createRoute({
+export const WorkspacesPageRoute = createRoute({
   getParentRoute: () => FERootRoute,
-  path: 'search-results/$searchId',
-  component: () => <SearchResultsPage />,
+  path: '/workspaces',
+  component: () => <WorkspacesPage />,
 });
 
-const SearchResultsPage = () => {
-  const { searchId } = SearchResultsPageRoute.useParams();
-
+const WorkspacesPage = () => {
   return (
     <Stack>
       <Link to="/">Back to home</Link>
-      <Text>Current search id: {searchId}</Text>
+      <Text>Workspaces page</Text>
     </Stack>
   );
 };

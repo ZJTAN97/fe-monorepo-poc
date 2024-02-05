@@ -1,17 +1,21 @@
-import { Button, Title } from '@mantine/core';
-import { Link, useNavigate } from '@tanstack/react-router';
-import React from 'react';
+import { FERootRoute } from '@fe-monorepo-poc/fe-base';
+import { Text } from '@mantine/core';
+import { Link, createRoute } from '@tanstack/react-router';
 
-export const ProfilePage = () => {
-  const navigate = useNavigate();
+export const ProfilePageRoute = createRoute({
+  getParentRoute: () => FERootRoute,
+  path: 'profiles/$profileId',
+  component: () => <ProfilePage />,
+});
+
+const ProfilePage = () => {
+  const { profileId } = ProfilePageRoute.useParams();
 
   return (
     <div>
-      <Title>Profile page</Title>
       <Link to="/">Back to home page</Link>
-      <Button onClick={() => navigate({ to: '/' })}>
-        Programmatically back to home page
-      </Button>
+      <Text>Profile page</Text>
+      <Text>Current profile id {profileId}</Text>
     </div>
   );
 };

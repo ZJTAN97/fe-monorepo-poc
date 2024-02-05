@@ -1,16 +1,31 @@
-import React from 'react';
-import { Button } from '@mantine/core';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { Button, Flex, Stack, Text } from '@mantine/core';
+import { Link, createRoute, useNavigate } from '@tanstack/react-router';
+import { FERootRoute } from '@fe-monorepo-poc/fe-base';
 
-export const LandingPage = () => {
+export const LandingPageRoute = createRoute({
+  getParentRoute: () => FERootRoute,
+  path: '/',
+  component: () => <LandingPage />,
+});
+
+const LandingPage = () => {
   const navigate = useNavigate();
+  const searchId = 'randomsearchid';
 
   return (
-    <div>
-      <Link to="/profile/new">Navigate to profile new programmatically</Link>
-      <Button onClick={() => navigate({ to: '/profile/new' })}>
-        navigate to profile programmatically
-      </Button>
-    </div>
+    <Stack>
+      <Link to="/">Back to home</Link>
+      <Text>Landing page for search</Text>
+      <Flex>
+        <Button
+          onClick={() =>
+            navigate({ to: '/search-results/$searchId', params: { searchId } })
+          }
+          variant="light"
+        >
+          Navigate to search results
+        </Button>
+      </Flex>
+    </Stack>
   );
 };

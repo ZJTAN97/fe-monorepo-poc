@@ -1,75 +1,26 @@
-import {
-  Outlet,
-  NotFoundRoute,
-  createRootRoute,
-  createRoute,
-  createRouter,
-  Link,
-} from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+import { createRouter } from '@tanstack/react-router';
 import '@mantine/core/styles.css';
-import { AppShell, Flex, MantineProvider } from '@mantine/core';
-import { ProfilePage, CreateProfilePage } from '@fe-monorepo-poc/store';
-import { LandingPage, SearchResultsPage } from '@fe-monorepo-poc/search';
+import { FERootRoute } from '@fe-monorepo-poc/fe-base';
+import {
+  CreateProfilePageRoute,
+  ProfilePageRoute,
+} from '@fe-monorepo-poc/store';
+import {
+  LandingPageRoute,
+  SearchResultsPageRoute,
+} from '@fe-monorepo-poc/search';
+import {
+  WorkspacePageRoute,
+  WorkspacesPageRoute,
+} from '@fe-monorepo-poc/workspace';
 
-export const rootRoute = createRootRoute({
-  notFoundComponent: () => <div>404 not found</div>,
-  component: () => (
-    <MantineProvider defaultColorScheme="dark">
-      <AppShell header={{ height: 60 }} padding="md">
-        <AppShell.Header>
-          <Flex my="md" gap="md" ml="xl">
-            <Link to="/">Search</Link>
-            <Link to="/workspace">Workspace</Link>
-            <Link to="/profiles">Store</Link>
-          </Flex>
-        </AppShell.Header>
-
-        <AppShell.Main>
-          <Outlet />
-        </AppShell.Main>
-      </AppShell>
-      <TanStackRouterDevtools />
-    </MantineProvider>
-  ),
-});
-
-const indexRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/',
-  component: () => <LandingPage />,
-});
-
-const searchRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/search',
-  component: () => <div>Search for anything</div>,
-});
-
-const profileRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: 'profiles',
-  component: () => <ProfilePage />,
-});
-
-const createProfileRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: `profile/new`,
-  component: () => <CreateProfilePage />,
-});
-
-const workspaceRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: 'workspace',
-  component: () => <div>workspace route</div>,
-});
-
-const routeTree = rootRoute.addChildren([
-  indexRoute,
-  searchRoute,
-  profileRoute,
-  createProfileRoute,
-  workspaceRoute,
+const routeTree = FERootRoute.addChildren([
+  CreateProfilePageRoute,
+  ProfilePageRoute,
+  LandingPageRoute,
+  SearchResultsPageRoute,
+  WorkspacePageRoute,
+  WorkspacesPageRoute,
 ]);
 
 export const router = createRouter({ routeTree });

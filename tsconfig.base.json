@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@fe-monorepo-poc/fe-base": ["libs/fe-base/src/index.ts"],
       "@fe-monorepo-poc/search": ["libs/search/src/index.ts"],
       "@fe-monorepo-poc/store": ["libs/store/src/index.ts"],
       "@fe-monorepo-poc/workspace": ["libs/workspace/src/index.ts"]
