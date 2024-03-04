@@ -15,11 +15,14 @@ dependencies:
     specifier: 2.47.0
     version: 2.47.0(react@18.2.0)
   '@tanstack/react-router':
-    specifier: 1.15.17
-    version: 1.15.17(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.18.1
+    version: 1.18.1(react-dom@18.2.0)(react@18.2.0)
   '@tanstack/router-devtools':
-    specifier: 1.15.17
-    version: 1.15.17(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.18.1
+    version: 1.18.1(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0)
+  '@tanstack/router-vite-plugin':
+    specifier: 1.18.1
+    version: 1.18.1
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -2937,8 +2940,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /@tanstack/react-router@1.15.17(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-s9zmdsdOOrJvbD9KuLj4Kul5EuykqtzsDO3hBXT4GXA3JElEJZifSWh6vL5EPWNUedPqtJ7LXJyzTzmpgTwL6w==}
+  /@tanstack/react-router@1.18.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-6Q3Rcg49wyqRzA5l0fln48H2cLxglQuNkxu3b9Oy0zO0VcljfTZorhUhUIqC6HZD2CfFJYfLverrFYxPmCs5JA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
@@ -2964,17 +2967,36 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@tanstack/router-devtools@1.15.17(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-EpVzmTEJNLX3qd5Gbftf6i80PLfunigyF5riumpx22+pqj3Iand23w4ODWsxzsT4ieOWmbeVfn4eDlASQ39pGQ==}
+  /@tanstack/router-devtools@1.18.1(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-2Jg2wA38qU/QcJThhSnOK+GcakoX1yjuE8bLbLbiztHa1PxsY3lOqzJdEXaVdKTyuiUy+JU11B8TLU4SPPZfMQ==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@tanstack/react-router': 1.15.17(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-router': 1.18.1(react-dom@18.2.0)(react@18.2.0)
+      clsx: 2.1.0
       date-fns: 2.30.0
+      goober: 2.1.14(csstype@3.1.3)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - csstype
+    dev: false
+
+  /@tanstack/router-generator@1.18.1:
+    resolution: {integrity: sha512-7nyeXcSaCnYhOdgY2CpEtQGccDLpo73xmoXL+DNrQiugjuqkoBQ7JGNEXIQQcH8lPra+gU4TeVS1vlRav2F/Dg==}
+    engines: {node: '>=12'}
+    dependencies:
+      prettier: 3.2.5
+      zod: 3.22.4
+    dev: false
+
+  /@tanstack/router-vite-plugin@1.18.1:
+    resolution: {integrity: sha512-gGlU5TbeQZWYERQVmjjTiZxPsrL2Id51YbL5MFQ41HBRmNMRPl4Xom32sc8ZzwADw8YXA9uPcRqRYFBLQDABSA==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@tanstack/router-generator': 1.18.1
     dev: false
 
   /@tanstack/store@0.1.3:
@@ -4143,6 +4165,11 @@ packages:
 
   /clsx@2.0.0:
     resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
+    engines: {node: '>=6'}
+    dev: false
+
+  /clsx@2.1.0:
+    resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
     engines: {node: '>=6'}
     dev: false
 
@@ -5432,6 +5459,14 @@ packages:
       merge2: 1.4.1
       slash: 3.0.0
     dev: true
+
+  /goober@2.1.14(csstype@3.1.3):
+    resolution: {integrity: sha512-4UpC0NdGyAFqLNPnhCT2iHpza2q+RAY3GV85a/mRPdzyPQMsj0KmMMuetdIkzWRbJ+Hgau1EZztq8ImmiMGhsg==}
+    peerDependencies:
+      csstype: ^3.0.10
+    dependencies:
+      csstype: 3.1.3
+    dev: false
 
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
@@ -6856,6 +6891,12 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
+
+  /prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: false
 
   /pretty-format@27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
@@ -8427,3 +8468,7 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  /zod@3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+    dev: false
