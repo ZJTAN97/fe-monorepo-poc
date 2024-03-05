@@ -13,15 +13,16 @@ export const Route = createRootRoute({
 
 export const Layout = () => {
   return (
-    <AppShell
-      header={{ height: 60 }}
-      navbar={{ width: 300, breakpoint: 'sm' }}
-      padding="md"
-    >
+    <AppShell header={{ height: 60 }} padding="md">
       <AppShell.Header>
         <Group h="100%" px="md" gap="md">
           <Link to="/">Hub</Link>
-          <Link to="/workspaces">Workspaces</Link>
+          <Link
+            to="/workspaces/$workspaceId"
+            params={{ workspaceId: 'random' }}
+          >
+            Workspaces
+          </Link>
         </Group>
       </AppShell.Header>
       <AppShell.Main>
