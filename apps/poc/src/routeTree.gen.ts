@@ -12,12 +12,36 @@
 
 import { Route as rootRoute } from './pages/__root'
 import { Route as IndexImport } from './pages/index'
+import { Route as cesProfilesImport } from './pages/(ces)/profiles'
+import { Route as asWorkspacesImport } from './pages/(as)/workspaces'
+import { Route as asSearchImport } from './pages/(as)/search'
+import { Route as asWorkspacesWorkspaceIdImport } from './pages/(as)/workspaces/$workspaceId'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const cesProfilesRoute = cesProfilesImport.update({
+  path: '/profiles',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const asWorkspacesRoute = asWorkspacesImport.update({
+  path: '/workspaces',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const asSearchRoute = asSearchImport.update({
+  path: '/search',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const asWorkspacesWorkspaceIdRoute = asWorkspacesWorkspaceIdImport.update({
+  path: '/$workspaceId',
+  getParentRoute: () => asWorkspacesRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -28,11 +52,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/(as)/search': {
+      preLoaderRoute: typeof asSearchImport
+      parentRoute: typeof rootRoute
+    }
+    '/(as)/workspaces': {
+      preLoaderRoute: typeof asWorkspacesImport
+      parentRoute: typeof rootRoute
+    }
+    '/(ces)/profiles': {
+      preLoaderRoute: typeof cesProfilesImport
+      parentRoute: typeof rootRoute
+    }
+    '/(as)/workspaces/$workspaceId': {
+      preLoaderRoute: typeof asWorkspacesWorkspaceIdImport
+      parentRoute: typeof asWorkspacesImport
+    }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexRoute])
+export const routeTree = rootRoute.addChildren([
+  IndexRoute,
+  asSearchRoute,
+  asWorkspacesRoute.addChildren([asWorkspacesWorkspaceIdRoute]),
+  cesProfilesRoute,
+])
 
 /* prettier-ignore-end */

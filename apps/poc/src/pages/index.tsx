@@ -1,10 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router';
-import React from 'react';
+import { Link, createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/')({
   component: () => <SearchLandingPage />,
 });
 
 export const SearchLandingPage = () => {
-  return <div>SearchLandingPage</div>;
+  return (
+    <div>
+      <Link to="/profiles">Profiles</Link>
+    </div>
+  );
 };

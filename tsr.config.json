@@ -1,0 +1,6 @@
+{
+    "routesDirectory": "./apps/poc/src/pages",
+    "generatedRouteTree": "./apps/poc/src/routeTree.gen.ts",
+    "routeFileIgnorePrefix": "-",
+    "quoteStyle": "single"
+  }
