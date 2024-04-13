@@ -10,6 +10,10 @@ To start the development server run `nx serve poc`. Open your browser and naviga
 
 Just run `nx build demoapp` to build the application. The build artifacts will be stored in the `dist/` directory, ready to be deployed.
 
+To test using serve (install globally)
+
+`npm serve /dist/apps/<your app of choice>`
+
 ## Explore the Project Graph
 
 Run `nx graph` to show the graph of the workspace.
