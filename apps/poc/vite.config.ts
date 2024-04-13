@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
   root: __dirname,
@@ -17,7 +18,7 @@ export default defineConfig({
     host: 'localhost',
   },
 
-  plugins: [react(), nxViteTsPaths()],
+  plugins: [react(), nxViteTsPaths(), visualizer()],
 
   optimizeDeps: {
     include: [
@@ -38,6 +39,17 @@ export default defineConfig({
     reportCompressedSize: true,
     commonjsOptions: {
       transformMixedEsModules: true,
+    },
+    minify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          mantine: ['@mantine/core'],
+          router: ['@tanstack/react-router'],
+          zod: ['zod']
+        },
+      },
     },
   },
 

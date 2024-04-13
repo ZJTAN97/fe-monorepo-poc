@@ -4,6 +4,7 @@
 dist
 tmp
 /out-tsc
+stats.html
 
 # dependencies
 node_modules

@@ -20,6 +20,22 @@ The following library modules will be disked cache, vite will used the prebundle
 
 By setting `force` to true, it will only reload when the dev server restarts.
 
+## build.rollupOptions
+
+Manual chunking of react, react-dom
+
+```
+ build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+        },
+      },
+    },
+  },
+
+```
 
 ---
 
@@ -28,3 +44,18 @@ By setting `force` to true, it will only reload when the dev server restarts.
 ## Good References
 
 - https://nx.dev/concepts/more-concepts/applications-and-libraries
+
+## Affected Projects
+
+```
+pnpm nx affected:dep-graph --base=<branch name>
+
+pnpm nx affected:build --base=<branch name>
+
+```
+
+---
+
+# Rollup
+
+## Chunking to improve peformance

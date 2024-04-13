@@ -1,14 +1,8 @@
 import { AppShell, Button, Flex, Group } from '@mantine/core';
 import { Link, Outlet, createRootRoute } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 
 export const Route = createRootRoute({
-  component: () => (
-    <>
-      <Layout />
-      <TanStackRouterDevtools />
-    </>
-  ),
+  component: () => <Layout />,
 });
 
 export const Layout = () => {
