@@ -10,7 +10,7 @@ export const BaseComponent = () => {
 
   return (
     <div>
-      <Button onClick={() => navigate({ to: '/search' })}>Click me</Button>
+      <Button onClick={() => navigate({ to: '/' })}>Click me</Button>
     </div>
   );
 };

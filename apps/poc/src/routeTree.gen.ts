@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './pages/__root'
 import { Route as IndexImport } from './pages/index'
+import { Route as pdtDigitalImport } from './pages/(pdt)/digital'
 import { Route as assearchSearchResultsImport } from './pages/(as)/(search)/search.results'
 
 // Create Virtual Routes
@@ -37,6 +38,11 @@ const cesProfilesLazyRoute = cesProfilesLazyImport
   } as any)
   .lazy(() => import('./pages/(ces)/profiles.lazy').then((d) => d.Route))
 
+const pdtDigitalRoute = pdtDigitalImport.update({
+  path: '/digital',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const asWorkspacesWorkspaceIdLazyRoute = asWorkspacesWorkspaceIdLazyImport
   .update({
     path: '/workspaces/$workspaceId',
@@ -59,6 +65,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/(pdt)/digital': {
+      preLoaderRoute: typeof pdtDigitalImport
+      parentRoute: typeof rootRoute
+    }
     '/(ces)/profiles': {
       preLoaderRoute: typeof cesProfilesLazyImport
       parentRoute: typeof rootRoute
@@ -78,6 +88,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
+  pdtDigitalRoute,
   cesProfilesLazyRoute,
   asWorkspacesWorkspaceIdLazyRoute,
   assearchSearchResultsRoute,

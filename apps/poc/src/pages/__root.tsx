@@ -16,20 +16,24 @@ export const Layout = () => {
     <AppShell header={{ height: 60 }} padding="md">
       <AppShell.Header>
         <Group h="100%" px="xl" justify="space-between">
-          <Flex gap="md">
-            <Button component={Link} to="/">
+          <Flex>
+            <Button component={Link} to="/" variant="subtle">
               Hub
             </Button>
             <Button
               component={Link}
               to="/workspaces/$workspaceId"
               params={{ workspaceId: 'random' }}
+              variant="subtle"
             >
               Workspace
             </Button>
+            <Button component={Link} to="/digital" variant="subtle">
+              Digital
+            </Button>
           </Flex>
           <Flex>
-            <Button component={Link} to="/profiles">
+            <Button component={Link} to="/profiles" variant="subtle">
               Profiles
             </Button>
           </Flex>
