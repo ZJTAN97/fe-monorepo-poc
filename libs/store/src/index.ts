@@ -12,4 +12,10 @@ const ProfilePage = React.lazy(() =>
   }))
 );
 
-export { CreateProfilePage, ProfilePage };
+const GraphPage = React.lazy(() =>
+  import('./pages/GraphPage/GraphPage').then((module) => ({
+    default: module.GraphPage,
+  }))
+);
+
+export { CreateProfilePage, ProfilePage, GraphPage };

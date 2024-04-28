@@ -20,14 +20,14 @@ export default defineConfig({
 
   plugins: [react(), nxViteTsPaths(), visualizer()],
 
-  optimizeDeps: {
-    include: [
-      '@fe-monorepo-poc/digital',
-      // '@fe-monorepo-poc/store',
-      '@fe-monorepo-poc/search',
-    ],
-    force: true, // on dev server start, do a force bundle
-  },
+  // optimizeDeps: {
+  //   include: [
+  //     '@fe-monorepo-poc/digital',
+  //     '@fe-monorepo-poc/store',
+  //     '@fe-monorepo-poc/search',
+  //   ],
+  //   force: true, // on dev server start, do a force bundle
+  // },
 
   // Uncomment this if you are using workers.
   // worker: {

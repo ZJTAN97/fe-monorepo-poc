@@ -20,6 +20,7 @@ import { Route as assearchSearchResultsImport } from './pages/(as)/(search)/sear
 
 const pdtDigitalLazyImport = createFileRoute('/(pdt)/digital')()
 const cesProfilesLazyImport = createFileRoute('/(ces)/profiles')()
+const cesProfilesGraphLazyImport = createFileRoute('/(ces)/profiles/graph')()
 const asworkspacesWorkspacesLazyImport = createFileRoute(
   '/(as)/(workspaces)/workspaces',
 )()
@@ -44,6 +45,13 @@ const cesProfilesLazyRoute = cesProfilesLazyImport
     getParentRoute: () => rootRoute,
   } as any)
   .lazy(() => import('./pages/(ces)/profiles.lazy').then((d) => d.Route))
+
+const cesProfilesGraphLazyRoute = cesProfilesGraphLazyImport
+  .update({
+    path: '/profiles/graph',
+    getParentRoute: () => rootRoute,
+  } as any)
+  .lazy(() => import('./pages/(ces)/profiles_.graph.lazy').then((d) => d.Route))
 
 const asworkspacesWorkspacesLazyRoute = asworkspacesWorkspacesLazyImport
   .update({
@@ -79,6 +87,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof asworkspacesWorkspacesLazyImport
       parentRoute: typeof rootRoute
     }
+    '/(ces)/profiles/graph': {
+      preLoaderRoute: typeof cesProfilesGraphLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/(as)/(search)/search/results': {
       preLoaderRoute: typeof assearchSearchResultsImport
       parentRoute: typeof rootRoute
@@ -93,6 +105,7 @@ export const routeTree = rootRoute.addChildren([
   cesProfilesLazyRoute,
   pdtDigitalLazyRoute,
   asworkspacesWorkspacesLazyRoute,
+  cesProfilesGraphLazyRoute,
   assearchSearchResultsRoute,
 ])
 

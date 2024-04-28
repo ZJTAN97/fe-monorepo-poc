@@ -1,5 +1,5 @@
 import { Button, Flex, Stack, Text, Title } from '@mantine/core';
-import { Link } from '@tanstack/react-router';
+import { Link, useParams } from '@tanstack/react-router';
 import { useRef, useState } from 'react';
 
 export const ProfilePage = () => {
@@ -39,9 +39,12 @@ export const ProfilePage = () => {
   return (
     <Stack px="md">
       <title>Profiles</title>
-      <Flex>
+      <Flex gap="md">
         <Button component={Link} to="/" variant="light">
           Back to home
+        </Button>
+        <Button component={Link} to="/profiles/graph">
+          Navigate to Graph Page
         </Button>
       </Flex>
 
