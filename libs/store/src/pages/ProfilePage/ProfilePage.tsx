@@ -38,13 +38,17 @@ export const ProfilePage = () => {
 
   return (
     <Stack px="md">
+      <title>Profiles</title>
       <Flex>
         <Button component={Link} to="/" variant="light">
           Back to home
         </Button>
       </Flex>
 
-      <Stack mt="lg">
+      <Stack mt="lg" gap="md">
+        <Title order={2} c="gray.8">
+          Profile Timer
+        </Title>
         <Text>Time passed: {timer}</Text>
 
         <Flex gap="sm">

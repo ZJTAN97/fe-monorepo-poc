@@ -14,14 +14,14 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './pages/__root'
 import { Route as IndexImport } from './pages/index'
-import { Route as pdtDigitalImport } from './pages/(pdt)/digital'
 import { Route as assearchSearchResultsImport } from './pages/(as)/(search)/search.results'
 
 // Create Virtual Routes
 
+const pdtDigitalLazyImport = createFileRoute('/(pdt)/digital')()
 const cesProfilesLazyImport = createFileRoute('/(ces)/profiles')()
-const asWorkspacesWorkspaceIdLazyImport = createFileRoute(
-  '/(as)/workspaces/$workspaceId',
+const asworkspacesWorkspacesLazyImport = createFileRoute(
+  '/(as)/(workspaces)/workspaces',
 )()
 
 // Create/Update Routes
@@ -31,6 +31,13 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const pdtDigitalLazyRoute = pdtDigitalLazyImport
+  .update({
+    path: '/digital',
+    getParentRoute: () => rootRoute,
+  } as any)
+  .lazy(() => import('./pages/(pdt)/digital.lazy').then((d) => d.Route))
+
 const cesProfilesLazyRoute = cesProfilesLazyImport
   .update({
     path: '/profiles',
@@ -38,18 +45,13 @@ const cesProfilesLazyRoute = cesProfilesLazyImport
   } as any)
   .lazy(() => import('./pages/(ces)/profiles.lazy').then((d) => d.Route))
 
-const pdtDigitalRoute = pdtDigitalImport.update({
-  path: '/digital',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const asWorkspacesWorkspaceIdLazyRoute = asWorkspacesWorkspaceIdLazyImport
+const asworkspacesWorkspacesLazyRoute = asworkspacesWorkspacesLazyImport
   .update({
-    path: '/workspaces/$workspaceId',
+    path: '/workspaces',
     getParentRoute: () => rootRoute,
   } as any)
   .lazy(() =>
-    import('./pages/(as)/workspaces/$workspaceId.lazy').then((d) => d.Route),
+    import('./pages/(as)/(workspaces)/workspaces.lazy').then((d) => d.Route),
   )
 
 const assearchSearchResultsRoute = assearchSearchResultsImport.update({
@@ -65,16 +67,16 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/(pdt)/digital': {
-      preLoaderRoute: typeof pdtDigitalImport
-      parentRoute: typeof rootRoute
-    }
     '/(ces)/profiles': {
       preLoaderRoute: typeof cesProfilesLazyImport
       parentRoute: typeof rootRoute
     }
-    '/(as)/workspaces/$workspaceId': {
-      preLoaderRoute: typeof asWorkspacesWorkspaceIdLazyImport
+    '/(pdt)/digital': {
+      preLoaderRoute: typeof pdtDigitalLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/(as)/(workspaces)/workspaces': {
+      preLoaderRoute: typeof asworkspacesWorkspacesLazyImport
       parentRoute: typeof rootRoute
     }
     '/(as)/(search)/search/results': {
@@ -88,9 +90,9 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
-  pdtDigitalRoute,
   cesProfilesLazyRoute,
-  asWorkspacesWorkspaceIdLazyRoute,
+  pdtDigitalLazyRoute,
+  asworkspacesWorkspacesLazyRoute,
   assearchSearchResultsRoute,
 ])
 

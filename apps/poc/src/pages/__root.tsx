@@ -16,8 +16,7 @@ export const Layout = () => {
             </Button>
             <Button
               component={Link}
-              to="/workspaces/$workspaceId"
-              params={{ workspaceId: 'random' }}
+              to="/workspaces"
               variant="subtle"
             >
               Workspace
