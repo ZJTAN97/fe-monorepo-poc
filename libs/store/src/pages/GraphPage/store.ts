@@ -18,7 +18,14 @@ export type ReactFlowState = {
 };
 
 const useStore = createWithEqualityFn<ReactFlowState>((set, get) => ({
-  nodes: [],
+  nodes: [
+    {
+      id: 'root',
+      type: 'mindmap',
+      data: { label: 'React' },
+      position: { x: 0, y: 0 },
+    },
+  ],
   edges: [],
   onNodesChange: (changes: NodeChange[]) => {
     set({

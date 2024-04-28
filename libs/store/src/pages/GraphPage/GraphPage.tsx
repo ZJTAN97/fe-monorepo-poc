@@ -1,34 +1,34 @@
-import React, { useCallback } from 'react';
 import 'reactflow/dist/style.css';
-import ReactFlow, {
-  Connection,
-  Controls,
-  Edge,
-  MiniMap,
-  addEdge,
-  useEdgesState,
-  useNodesState,
-} from 'reactflow';
+import ReactFlow, { Controls, MiniMap, NodeOrigin, Panel } from 'reactflow';
 import { Stack, Title } from '@mantine/core';
+import useStore, { ReactFlowState } from './store';
+import { shallow } from 'zustand/shallow';
+import { MindMapNode } from './MindMapNode';
+import { MindMapEdge } from './MindMapEdge';
 
 export const GraphPage = () => {
-  const initialNodes = [
-    {
-      id: '1',
-      position: { x: 0, y: 0 },
-      data: { label: 'Store' },
-      style: { borderColor: 'var(--mantine-color-blue-5)' },
-    },
-    { id: '2', position: { x: 0, y: 100 }, data: { label: 'Workspace' } },
-  ];
-  const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
+  const selector = (state: ReactFlowState) => ({
+    nodes: state.nodes,
+    edges: state.edges,
+    onNodesChange: state.onNodesChange,
+    onEdgesChange: state.onEdgesChange,
+  });
 
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const nodeTypes = {
+    mindmap: MindMapNode,
+  };
+  
+  const edgeTypes = {
+    mindmap: MindMapEdge,
+  };
 
-  const onConnect = useCallback(
-    (params: Edge | Connection) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
+  // this places the node origin in the center of a node
+  const nodeOrigin: NodeOrigin = [0.5, 0.5];
+
+  // whenever you use multiple values, you should use shallow to make sure the component only re-renders when one of the values changes
+  const { nodes, edges, onNodesChange, onEdgesChange } = useStore(
+    selector,
+    shallow
   );
 
   return (
@@ -40,9 +40,11 @@ export const GraphPage = () => {
         <ReactFlow
           nodes={nodes}
           edges={edges}
+          nodeTypes={nodeTypes}
+          edgeTypes={edgeTypes}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
-          onConnect={onConnect}
+          nodeOrigin={nodeOrigin}
           fitView
           style={{
             border: 'solid 1px var(--mantine-color-gray-2)',
@@ -55,6 +57,7 @@ export const GraphPage = () => {
         >
           <Controls />
           <MiniMap />
+          <Panel position="top-left">React Mindmap</Panel>
         </ReactFlow>
       </div>
     </Stack>
