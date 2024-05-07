@@ -9,9 +9,9 @@ const router = createRouter({ routeTree });
 export type PocRouter = typeof router;
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <MantineProvider>
       <RouterProvider router={router} />
     </MantineProvider>
-  // </React.StrictMode>
+  </React.StrictMode>
 );

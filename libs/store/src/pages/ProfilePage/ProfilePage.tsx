@@ -1,5 +1,5 @@
 import { Button, Flex, Stack, Text, Title } from '@mantine/core';
-import { Link, useParams } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 import { useRef, useState } from 'react';
 
 export const ProfilePage = () => {

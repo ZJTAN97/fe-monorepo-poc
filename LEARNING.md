@@ -59,3 +59,13 @@ pnpm nx affected:build --base=<branch name>
 # Rollup
 
 ## Chunking to improve peformance
+
+- Optimize by chunking (to be updated)
+
+---
+
+# NX 
+
+## Package-Based Repos
+
+- Will have individual `package.json`
