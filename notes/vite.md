@@ -36,36 +36,3 @@ Manual chunking of react, react-dom
   },
 
 ```
-
----
-
-# NX
-
-## Good References
-
-- https://nx.dev/concepts/more-concepts/applications-and-libraries
-
-## Affected Projects
-
-```
-pnpm nx affected:dep-graph --base=<branch name>
-
-pnpm nx affected:build --base=<branch name>
-
-```
-
----
-
-# Rollup
-
-## Chunking to improve peformance
-
-- Optimize by chunking (to be updated)
-
----
-
-# NX 
-
-## Package-Based Repos
-
-- Will have individual `package.json`

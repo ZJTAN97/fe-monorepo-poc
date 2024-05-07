@@ -20,19 +20,16 @@ export default defineConfig({
 
   plugins: [react(), nxViteTsPaths(), visualizer()],
 
-  // optimizeDeps: {
-  //   include: [
-  //     '@fe-monorepo-poc/digital',
-  //     '@fe-monorepo-poc/store',
-  //     '@fe-monorepo-poc/search',
-  //   ],
-  //   force: true, // on dev server start, do a force bundle
-  // },
-
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
+  // This force optimize listen dependencies
+  // Must be resolvable import paths, cannot be globs
+  optimizeDeps: {
+    include: [
+      '@fe-monorepo-poc/digital',
+      '@fe-monorepo-poc/store',
+      '@fe-monorepo-poc/search',
+    ],
+    force: true, // on dev server start, do a force bundle
+  },
 
   build: {
     outDir: '../../dist/apps/poc',
@@ -47,7 +44,7 @@ export default defineConfig({
           react: ['react', 'react-dom'],
           mantine: ['@mantine/core'],
           router: ['@tanstack/react-router'],
-          zod: ['zod']
+          zod: ['zod'],
         },
       },
     },
